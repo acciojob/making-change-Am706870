@@ -1,19 +1,29 @@
 const makeChange = (c) => {
 	const coins = {
-		0: [p: 1]
-		1: [n: 5]
-		2: [d: 10]
-		3: [q: 25]
-	}
-	const amount = {}
-	for(let i=0; i=3;i++){
+		0: ["q", 25],
+		1: ["d", 10],
+		2: ["n", 5],
+		3: ["p", 1],
+	};
+	let amount = {}
+	c = Number(c);
+	
+	for(let i=0; i<=3;i++){
 		const [bill, val] = coins[i]
-		while(c >= val){
-			amount += [bill,val]
-			c -=coins[val]  
+		const value = Math.floor(c/val) 
+		
+		
+		if(value>0){
+			
+			amount[bill]	 = value;
+		
+			
+			c -= value*val; 
+		}else {
+			amount[bill] = 0;
 		}
 	}
-  // your name here
+		return amount
 };
 
 // Do not the change the code below
